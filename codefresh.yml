@@ -10,7 +10,7 @@ steps:
     image: ${{build_image}}
     fail-fast: false
     commands:
-      - npm install --only=dev
+      - npm install
       - npm build
       - npm test
       - cp -r ./dist ./demo/dist
