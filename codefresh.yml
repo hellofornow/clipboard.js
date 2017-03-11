@@ -8,7 +8,7 @@ steps:
     dockerfile: Dockerfile.build
   unit_tests:
     image: ${{build_image}}
-    fail-fast: false
+    fail-fast: true
     commands:
       - npm install
       - npm build
