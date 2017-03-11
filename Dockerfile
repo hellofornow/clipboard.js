@@ -1,5 +1,5 @@
 FROM node:latest
 COPY ./demo /src
-WORKIDR /src
+WORKDIR /src
 
 CMD ["npm", "start"]
