@@ -1,0 +1,22 @@
+version: '1.0'
+steps:
+  build_image:
+    title: build pack
+    type: build
+    #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
+    image_name: clipboardjs/buildpack
+    dockerfile: Dockerfile.build
+  unit_tests:
+    image: ${{build_image}}
+    fail-fast: false
+    commands:
+      - npm install --only=dev
+      - npm build
+      - npm test
+      - cp -r ./dist ./demo/dist
+  build_demo:
+    title: Building Demo Image
+    type: build
+    #Important: rename this image to to a valid repository in your registry. For example: myUserName/vote
+    image_name: clipboardjs/demo
+    dockerfile: Dockerfile
